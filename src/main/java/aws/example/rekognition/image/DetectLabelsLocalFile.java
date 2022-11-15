@@ -1,4 +1,5 @@
 package aws.example.rekognition.image;
+
 import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
 import software.amazon.awssdk.core.SdkBytes;
 import software.amazon.awssdk.regions.Region;
@@ -38,7 +39,7 @@ public class DetectLabelsLocalFile {
 
             detectImageLabels(rekClient, sourceImage);
             rekClient.close();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -64,8 +65,8 @@ public class DetectLabelsLocalFile {
             List<Label> labels = labelsResponse.labels();
             System.out.println("Detected labels for the given photo");
             int i = 1;
-            for (Label label: labels) {
-                System.out.println( i + " - " + label.name() + ": " + label.confidence().toString());
+            for (Label label : labels) {
+                System.out.println(i + " - " + label.name() + ": " + label.confidence().toString());
                 i++;
             }
 
@@ -73,8 +74,7 @@ public class DetectLabelsLocalFile {
             System.out.println(e.getMessage());
             e.printStackTrace();
             System.exit(1);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

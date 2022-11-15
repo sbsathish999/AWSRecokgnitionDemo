@@ -9,10 +9,13 @@ import software.amazon.awssdk.services.rekognition.model.DetectLabelsResponse;
 import software.amazon.awssdk.services.rekognition.model.Label;
 import software.amazon.awssdk.services.rekognition.model.RekognitionException;
 import software.amazon.awssdk.services.rekognition.model.S3Object;
+
 import java.util.List;
+
 public class DetectLabelsS3 {
 
     public static void main(String[] args) {
+
 
         String bucket = "1-bucket-rekognition-demo-1";
         String image = "unknown2.jpg";
@@ -47,9 +50,10 @@ public class DetectLabelsS3 {
             DetectLabelsResponse labelsResponse = rekClient.detectLabels(detectLabelsRequest);
             List<Label> labels = labelsResponse.labels();
             System.out.println("Detected labels for the given photo");
-            int i=1;
+            int i = 1;
             for (Label label : labels) {
-                System.out.println(i + " - " + label.name() + ": " + label.confidence().toString() + label.parents());
+                System.out.println(i + " - " + label.name() + ": " + label.confidence().toString()
+                        + label.parents() + ", aliases : " + label.aliases() + ", " + label.categories());
                 i++;
             }
 
