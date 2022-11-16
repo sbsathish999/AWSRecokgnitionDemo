@@ -11,7 +11,7 @@ import software.amazon.awssdk.services.s3.model.S3Exception;
 
 import java.util.List;
 
-/* This program to find matching images with its matching labels with query string */
+/* This program to find matching images with its matching labels with query string using Detect Labels API from AWS Recokgnition services*/
 
 public class FindMatchingImagesByLabels {
 
