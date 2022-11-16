@@ -18,7 +18,7 @@ public class DetectLabelsS3 {
 
 
         String bucket = "1-bucket-rekognition-demo-1";
-        String image = "unknown2.jpg";
+        String image = "unknown1.jpg";
         Region region = Region.US_EAST_1;
         RekognitionClient rekClient = RekognitionClient.builder()
                 .region(region)
@@ -42,6 +42,7 @@ public class DetectLabelsS3 {
                     .s3Object(s3Object)
                     .build();
 
+            System.out.println(myImage.toString());
             DetectLabelsRequest detectLabelsRequest = DetectLabelsRequest.builder()
                     .image(myImage)
                     .maxLabels(25)
@@ -52,6 +53,7 @@ public class DetectLabelsS3 {
             System.out.println("Detected labels for the given photo");
             int i = 1;
             for (Label label : labels) {
+                System.out.println("label : " + label.toString());
                 System.out.println(i + " - " + label.name() + ": " + label.confidence().toString()
                         + label.parents() + ", aliases : " + label.aliases() + ", " + label.categories());
                 i++;
